@@ -1,5 +1,9 @@
     #include <stdio.h>
     #include <stdlib.h>
+    
+    float Densidade(int populacao, float area);
+    float PibPerCapita(float pib, int populacao);
+
     int main()
     {
         char estado1;
@@ -58,23 +62,39 @@
         printf("Digite o PIB da cidade: \n");
         scanf("%f", &pib2);
 
+        //Imprime os valores da primeira carta
         printf("DADOS DA PRIMEIRA CARTA\nCarta 1\n");
         printf("Estado: %c\n", estado1);
         printf("Codigo: %s\n", codigoEstado);
         printf("Nome da cidade: %s\n", nomeCidade);
         printf("Populacao: %d\n", populacao1);
         printf("Area: %.2f\n", areaKm1);
-        printf("PIB: %.2f\n", pib1);
+        printf("PIB: %.2f reais\n", pib1);
         printf("Quantidade de pontos turisticos: %d\n", numPontosTuristicos1);
+        float densidade1 = Densidade(populacao1, areaKm1);
+        printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
+        float ppc1 = PibPerCapita(pib1, populacao1);
+        printf("PIB per Capita: %.2f reais\n", ppc1);
 
+        //Imprime os valores da segunda carta
         printf("DADOS DA SEGUNDA CARTA\nCarta 2\n");
         printf("Estado: %c\n", estado2);
         printf("Codigo: %s\n", codigoEstado2);
         printf("Nome da cidade: %s\n", nomeCidade2);
         printf("Populacao: %d\n", populacao2);
         printf("Area: %.2f\n", areaKm2);
-        printf("PIB: %.2f\n", pib2);
+        printf("PIB: %.2f reais\n", pib2);
         printf("Quantidade de pontos turisticos: %d\n", numPontosTuristicos2);
-
+        float densidade2 = Densidade(populacao2, areaKm2);
+        printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
+        float ppc2 = PibPerCapita(pib2, populacao2);
+        printf("PIB per Capita: %.2f reais\n", ppc2);
         return 0;
+    }
+    
+    float Densidade(int populacao, float area){ //faz o calulo da densidade
+        return populacao / area;
+    }
+    float PibPerCapita(float pib, int populacao){ //faz o calculo do PIB per Capita
+        return pib / populacao;
     }
